@@ -1,0 +1,47 @@
+<NavBar />
+<style>
+
+
+div:first-child input{
+  display: none;
+}
+
+</style>
+<div class="card mb-4">
+
+    <div class="card-body text-center mb-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+            class="rounded-circle img-fluid" style="width: 150px;" id="img">
+        <div class="d-flex justify-content-center mt-2">
+            <input type="file" class="btn btn-outline-primary ms-1" name="foto" id="foto" accept="image/*">
+            <label for="foto" class="btn btn-primary">Cambiar foto</label>
+        </div>
+        <h5 class="my-3 mb-1 " id="nombre"></h5>
+        <hr style="width: 120px; margin:0 auto; border:2px solid">
+        <h5 class="my-3 mb-1" id="contra"></h5>
+        <hr style="width: 120px; margin:0 auto; border:2px solid">
+
+    </div>
+</div>
+
+
+
+<script>
+    document.getElementById('nombre').innerText = localStorage.getItem('user');
+    document.getElementById('contra').innerText = localStorage.getItem('pass')
+    const defaultFile = 'https://cdn-icons-png.freepik.com/512/219/219988.png';
+
+const file = document.getElementById( 'foto' );
+const img = document.getElementById( 'img' );
+file.addEventListener( 'change', e => {
+  if( e.target.files[0] ){
+    const reader = new FileReader( );
+    reader.onload = function( e ){
+      img.src = e.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0])
+  }else{
+    img.src = defaultFile;
+  }
+} );
+</script>
